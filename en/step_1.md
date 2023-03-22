@@ -1,59 +1,37 @@
-## Introduction
+This script changes the material of all the parts of the goal when the ball collides with any one of them. It also changes the material of individual ramps as the ball rolls over them. 
 
-Add project description here. What will learners be making? Broadly what skills will they be learning?
+You need to create a `Goal` tag and add it to all of the GameObjects than make up the goal.
 
-### What you will make
+Add the script to all the GameObjects in the goal. 
 
---- no-print ---
-Add instructions for interacting with the embedded content here.
-
-<div class="scratch-preview">
-  <iframe allowtransparency="true" width="485" height="402" src="https://scratch.mit.edu/projects/embed/160619869/?autostart=false" frameborder="0"></iframe>
-</div>
---- /no-print ---
-
---- print-only ---
-![Complete project](images/showcase_static.png)
---- /print-only ---
-
---- collapse ---
+--- code ---
 ---
-title: What you will need
----
-### Hardware
-
-+ A computer or tablet capable of running Scratch 3
-
-### Software
-
-+ Scratch 3 (either [online](https://scratch.mit.edu/){:target="_blank"} or [offline](https://scratch.mit.edu/download){:target="_blank"})
-+ Python 3
-+ This project can be completed in a web browser using [trinket.io](https://trinket.io/)
-
-### Downloads
-
-+ Download the project [starter file](https://rpf.io/p/en/projectName-go){:target="_blank"} if working offline
-
---- /collapse ---
-
---- collapse ---
----
-title: What you will learn
+language: cs
+filename: GoalController.cs
+line_numbers: true
+line_number_start: 1
+line_highlights:
 ---
 
-+ Learning objective 1
-+ Learning objective 2
-+ Learning objective 3
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
---- /collapse ---
+public class GoalController : MonoBehaviour
+{
 
---- collapse ---
----
-title: Additional information for educators
----
+  void OnCollisionEnter(Collision collision)
+  {
+      if (collision.gameObject.tag == "Player" && gameObject.tag == "Goal"){
+            
+            var objects = GameObject.FindGameObjectsWithTag("Goal");
+        
+            foreach (var obj in objects) {
+                obj.GetComponent<Renderer>().sharedMaterial = collision.gameObject.GetComponent<Renderer>().sharedMaterial;
+            }         
+      }
+  }
 
-You can download the completed project [here](https://rpf.io/p/en/projectName-get){:target="_blank"}.
+}
 
-If you need to print this project, please use the [printer-friendly version](https://projects.raspberrypi.org/en/projects/projectName/print){:target="_blank"}.
-
---- /collapse ---
+--- /code ---
