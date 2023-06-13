@@ -1,6 +1,6 @@
 This script changes the material of all the parts of the goal when the ball collides with any one of them. It also changes the material of individual ramps as the ball rolls over them. 
 
-You need to create a `Goal` tag and add it to all of the GameObjects than make up the goal.
+You need to create a `Goal` tag and add it to all of the GameObjects that make up the goal.
 
 Add the script to all the GameObjects in the goal. 
 
